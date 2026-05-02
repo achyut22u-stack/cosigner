@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Cosigner: Harvard MPA/ID Loan</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #5a5a5a;
+    --rule: #d8d2cb;
+    --accent: #A41034;          /* Harvard Crimson */
+    --accent-deep: #7a0d27;
+    --soft: #f6f4f1;            /* warm soft */
+    --soft-border: #e8e3dc;
+    --warn-bg: #fdf6e3;
+    --warn-border: #e6d28a;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    padding: 0 24px 80px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: #ffffff;
+  }
+  .crimson-stripe {
+    height: 5px;
+    background: var(--accent);
+    margin: 0 -24px 0;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  header.doc-header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 4px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+  h2 {
+    font-size: 15px;
+    margin: 36px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  h2 .num {
+    color: var(--accent);
+    margin-right: 8px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 18px 0 6px;
+    font-weight: 600;
+  }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a:hover { color: var(--accent-deep); text-decoration: none; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  th {
+    background: var(--soft);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .ask-box {
+    background: var(--soft);
+    border: 1px solid var(--soft-border);
+    border-left: 3px solid var(--accent);
+    padding: 16px 18px;
+    margin: 18px 0 8px;
+    border-radius: 4px;
+  }
+  .ask-grid {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    row-gap: 6px;
+    column-gap: 14px;
+    font-size: 13px;
+  }
+  .ask-grid dt {
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .ask-grid dd {
+    margin: 0;
+    font-weight: 500;
+  }
+  .timeline {
+    display: flex;
+    margin: 14px 0 4px;
+    border: 1px solid var(--soft-border);
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: 11.5px;
+  }
+  .timeline div {
+    flex: 1;
+    padding: 8px 10px;
+    border-right: 1px solid var(--soft-border);
+    background: #fff;
+  }
+  .timeline div:last-child { border-right: none; }
+  .timeline .t-label {
+    display: block;
+    color: var(--accent);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+  .note {
+    background: var(--warn-bg);
+    border-left: 3px solid var(--warn-border);
+    padding: 10px 14px;
+    margin: 14px 0;
+    font-size: 12.5px;
+    color: #5a4a1a;
+  }
+  .note strong { color: #4a3a0a; }
+  .small { font-size: 12px; color: var(--muted); }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 0;
+  }
+  @media (max-width: 600px) {
+    body { padding: 0 16px 60px; font-size: 14px; }
+    .crimson-stripe { margin: 0 -16px 0; }
+    .wrap { padding-top: 24px; }
+    .two-col { grid-template-columns: 1fr; }
+    .ask-grid { grid-template-columns: 1fr; }
+    .ask-grid dt { color: var(--muted); margin-top: 4px; }
+    .timeline { flex-direction: column; }
+    .timeline div { border-right: none; border-bottom: 1px solid var(--soft-border); }
+  }
+  ul.tight li { margin: 1px 0; }
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 12px 0;
+  }
+  .stat {
+    flex: 1;
+    min-width: 140px;
+    padding: 10px 12px;
+    border: 1px solid var(--soft-border);
+    border-top: 3px solid var(--accent);
+    border-radius: 4px;
+    background: var(--soft);
+  }
+  .stat .v {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .stat .l {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  footer.doc-footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .docs-list a { display: block; padding: 4px 0; }
+</style>
+</head>
+<body>
+<div class="crimson-stripe"></div>
+<div class="wrap">
+
+<header class="doc-header">
+  <p class="eyebrow">Reference document</p>
+  <h1>US Cosigner: Harvard MPA/ID Loan</h1>
+  <p class="sub">Achyut Rokkam &middot; Harvard Kennedy School MPA/ID</p>
+</header>
+
+<!-- 1. WHAT I AM ASKING YOU TO CONSIDER -->
+<section>
+<h2><span class="num">1.</span> What I Am Asking You To Consider</h2>
+<div class="ask-box">
+  <dl class="ask-grid">
+    <dt>Role</dt><dd>Cosigner on a US-denominated private student loan</dd>
+    <dt>Loan size</dt><dd>Between <strong>$110,000 and $150,000</strong></dd>
+    <dt>Lender</dt><dd>We would apply to two or three of MPower, Earnest, Discover, and Harvard Credit Union and pick whichever offers the best terms</dd>
+    <dt>Likely term</dt><dd>About 10 years, fixed rate</dd>
+    <dt>Cosigner release</dt><dd>I would refinance the loan in my name within ~2 months of starting work, ideally within a year of graduation. That removes you completely as a cosigner.</dd>
+    <dt>Out-of-pocket from you</dt><dd>None, unless I default! I've explained more below how that is not a possibility.</dd>
+  </dl>
+  <div class="timeline" aria-label="Program timeline">
+    <div><span class="t-label">Now to Aug 2026</span>Loan and visa approvals</div>
+    <div><span class="t-label">Aug 2026 to Jun 2028</span>In school, no payments due</div>
+    <div><span class="t-label">Jun to Dec 2028</span>6-month grace period</div>
+    <div><span class="t-label">By mid-2029</span>Refinance to myself</div>
+  </div>
+</div>
+</section>
+
+<!-- 2. ABOUT THE PROGRAM -->
+<section>
+<h2><span class="num">2.</span> About The Harvard MPA/ID Program</h2>
+<p>The Master in Public Administration in International Development (MPA/ID) at Harvard Kennedy School is a two-year, economics-centred graduate program. It's widely regarded as one of the most rigorous public policy and leadership degrees in the world.</p>
+
+<div class="stat-row">
+  <div class="stat"><span class="v">~80</span><span class="l">Cohort size (5-yr avg)</span></div>
+  <div class="stat"><span class="v">2 years</span><span class="l">Aug 2026 to Jun 2028</span></div>
+  <div class="stat"><span class="v">STEM</span><span class="l">3 yrs post-grad OPT (US)</span></div>
+</div>
+
+<p>The MPA/ID is <strong>STEM-designated</strong>, so as an international student I'm eligible for up to <strong>3 years of post-graduation work authorisation in the US</strong> (12 months of OPT plus a 24-month STEM extension). That's what underpins my US repayment plan.</p>
+
+<p class="small">Reference: <a href="https://www.hks.harvard.edu/educational-programs/masters-programs/master-public-administration-international-development" target="_blank" rel="noopener">HKS MPA/ID program page</a></p>
+</section>
+
+<!-- 3. EMPLOYMENT OUTCOMES -->
+<section>
+<h2><span class="num">3.</span> Employment Outcomes</h2>
+<p>Where I'm aiming: a strategy or management consulting role at a top US firm (McKinsey, BCG, Bain, or one of the Big 4 consulting practices). Starting compensation in this band typically runs <strong>USD 120,000 to 160,000 base</strong>.</p>
+
+<p>I'm confident about landing this for three reasons:</p>
+<ul class="tight">
+  <li>I've worked in consulting for 5 years already, so I'll be a strong candidate.</li>
+  <li>The MPA/ID has a pipeline into these firms. McKinsey and BCG hire directly out of the program.</li>
+  <li>Several friends from my network have done exactly this route in the last few years and have shared what worked for them.</li>
+</ul>
+
+<p>For wider context, here's where the Class of 2025 went, and what the typical starting salary looks like in each sector:</p>
+
+<table>
+  <thead>
+    <tr><th>Sector</th><th class="num">% of Class of 2025</th><th class="num">Approx. starting salary (USD)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Private (consulting, finance, tech)</td><td class="num">42%</td><td class="num">$130K to $160K</td></tr>
+    <tr><td>Public sector and IGOs (governments, World Bank, IMF, IFC)</td><td class="num">42%</td><td class="num">$90K to $110K</td></tr>
+    <tr><td>Nonprofit and NGO</td><td class="num">15%</td><td class="num">~$89K</td></tr>
+    <tr><td>Unspecified</td><td class="num">2%</td><td class="num">&mdash;</td></tr>
+  </tbody>
+</table>
+
+<p class="small">Reference: <a href="https://www.hks.harvard.edu/more/employers/about-our-graduates/employment-snapshot/class-2025-employment-snapshot" target="_blank" rel="noopener">HKS Class of 2025 Employment Snapshot</a></p>
+</section>
+
+<!-- 4. ABOUT ME -->
+<section>
+<h2><span class="num">4.</span> My Credentials And Professional Standing</h2>
+
+<p><strong>Current role:</strong> Senior Associate at 60 Decibels, a boutique impact measurement company spun out of Acumen Fund, based in the US with offices in London, New York, Nairobi, Bangalore, and Latin America. I joined in 2020 as an analyst and have been promoted twice to Senior Associate so far. I lead impact studies for global clients like Merck, the Gates Foundation, philanthropies, and impact investors.</p>
+
+<p><strong>Current compensation:</strong> about INR 40 lakhs a year, which works out to roughly USD 90,000-equivalent for the same role in the US (PPP-adjusted).</p>
+
+<p>
+  Full credentials: <a href="25.05.05%20Achyut%20Rokkam%20-%20Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a> &middot;
+  <a href="https://www.linkedin.com/in/achyutrokkam/" target="_blank" rel="noopener">LinkedIn profile</a>
+</p>
+</section>
+
+<!-- 5. REPAYMENT PLAN -->
+<section>
+<h2><span class="num">5.</span> How The Loan Would Get Repaid</h2>
+
+<p><strong>Primary plan: a US consulting role after graduation.</strong></p>
+<ul class="tight">
+  <li>As I shared before, a US consulting role after graduation, with an expected base of USD 110,000 to 150,000. My loan EMI would be around USD 1,600 a month ($150K, 10 years, ~5% interest).</li>
+  <li>STEM OPT gives me a 3-year US work runway to land and start the job, and I would refinance the loan into my own name within ~2 months of starting full-time work, fully removing you as a cosigner.</li>
+</ul>
+
+<p><strong>Backup 1: return to 60 Decibels.</strong></p>
+<ul class="tight">
+  <li>60 Decibels has offices in India, the UK, and the US. I'm in good standing and could come back to the firm in any of those geographies if my US plan is delayed.</li>
+  <li>Salaries in the UK or US offices would still cover full repayment, with the same refinance plan applying.</li>
+</ul>
+
+<p><strong>Backup 2: using a portion of my inheritance.</strong></p>
+<ul class="tight">
+  <li>We're in the process of selling our home in Koramangala. Once sold, it will yield approximately USD 200,000 in liquid funds that I'd have direct personal access to.</li>
+  <li>This isn't enough to fully prepay the loan once interest is included. But it's more than enough to cover monthly EMIs continuously for years if I ever needed to bridge a gap. So there's effectively no scenario where I miss a payment.</li>
+  <li>There are some sensitivities involved, but the legal pieces are in place and the sale is expected to go through in the next few months.</li>
+</ul>
+</section>
+
+<!-- 6. WHY A US LOAN -->
+<section>
+<h2><span class="num">6.</span> Why A US Loan With A US Cosigner</h2>
+<ol>
+  <li><strong>Lower interest rates.</strong> US private student loans for top schools price between 3% and 9% fixed; comparable Indian loans are 9% to 14%. On a $150K, 10-year loan, that's roughly USD 60,000 to 70,000 in lifetime interest savings.</li>
+  <li><strong>Access to HKS's Loan Repayment Assistance Program (LRAP).</strong> If I take a public-sector or nonprofit role after graduation, HKS covers 25% to 100% of my monthly loan payment (scaled to income, capped at $100K single / $125K married, for up to 5 years). This doesn't apply to consulting roles, but it's still a good scheme to be eligible for.</li>
+  <li><strong>Year 2 funding plan.</strong> The US loan only needs to cover Year 1. For Year 2, my plan in order of preference is fellowships first, then RA-ships and internships, and only if needed a parallel India loan in my mother's name (~INR 75 lakh, ~USD 90K).</li>
+</ol>
+<p class="small">Reference: <a href="https://www.hks.harvard.edu/admissions-aid/funding-your-education/funding-your-masters-education/student-loans/LRAP" target="_blank" rel="noopener">HKS Loan Repayment Assistance Program (LRAP)</a></p>
+</section>
+
+<!-- 7. COST OF ATTENDANCE -->
+<section>
+<h2><span class="num">7.</span> Harvard's Published Cost Of Attendance (2026 To 2027)</h2>
+<p>Below is the official 2026 to 2027 cost of attendance for the MPA/ID program from the HKS website. Per year cost is about <strong>USD 106,058</strong> with Year 2 being slightly less.</p>
+
+<table>
+  <thead>
+    <tr><th>Line item</th><th class="num">USD (Year 1)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Tuition and fees</td><td class="num">74,405</td></tr>
+    <tr><td>Living expenses (9 months)</td><td class="num">26,568</td></tr>
+    <tr><td>Personal expenses</td><td class="num">2,583</td></tr>
+    <tr><td>Transportation</td><td class="num">891</td></tr>
+    <tr><td>Books and supplies</td><td class="num">1,611</td></tr>
+    <tr><td><strong>Total Year 1 Cost of Attendance</strong></td><td class="num"><strong>106,058</strong></td></tr>
+  </tbody>
+</table>
+
+<p>My plan is to take a loan of $110K to $150K which would cover Year 1 fully, with a small buffer for unexpected expenses.</p>
+<p class="small">Reference: <a href="https://www.hks.harvard.edu/admissions-aid/funding-your-education/funding-your-masters-education/tuition-fees" target="_blank" rel="noopener">HKS Tuition &amp; Fees</a></p>
+</section>
+
+<!-- 8. EXAMPLE LOAN -->
+<section>
+<h2><span class="num">8.</span> Example Loan Terms</h2>
+<p>The two PDFs at the bottom are a real example loan from HUCU (2022), shared so you can see the kind of terms involved. My own approval disclosure will be different, and I'll share it with you before we sign anything.</p>
+
+<table>
+  <thead>
+    <tr><th>Term</th><th>Detail</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Lender</td><td>Harvard University Credit Union (HUCU)</td></tr>
+    <tr><td>Loan amount (example)</td><td>USD 50,000</td></tr>
+    <tr><td>Interest rate</td><td>4.650% fixed (APR 4.592%); fixed for life of loan</td></tr>
+    <tr><td>Loan term</td><td>10 years (120 monthly payments)</td></tr>
+    <tr><td>Origination fee</td><td>USD 0</td></tr>
+    <tr><td>In-school deferment</td><td>No payments required while enrolled, plus a 6-month grace period after graduation</td></tr>
+    <tr><td>Interest during deferment</td><td>Accrues; capitalised at start of repayment period</td></tr>
+    <tr><td>Monthly payment in repayment</td><td>USD 571.27 on a $50K loan; modeled at ~$1,600/month for a $150K loan</td></tr>
+    <tr><td>Late charge</td><td>Lesser of 5% of payment or USD 15</td></tr>
+    <tr><td>Returned payment fee</td><td>USD 20</td></tr>
+    <tr><td>Prepayment penalty</td><td>None. Loan can be prepaid in full or in part at any time.</td></tr>
+    <tr><td>Cosigner liability</td><td>Joint and several with the student borrower</td></tr>
+    <tr><td>Cosigner release</td><td>Not specified in this contract; typically requires refinance into borrower's name only (which is my plan)</td></tr>
+    <tr><td>Default events</td><td>Missed payment; material adverse change in financial condition; bankruptcy of borrower or cosigner; misrepresentation</td></tr>
+    <tr><td>Governing law</td><td>Federal &amp; Commonwealth of Massachusetts</td></tr>
+  </tbody>
+</table>
+</section>
+
+<!-- 9. WHAT BEING A COSIGNER MEANS -->
+<section>
+<h2><span class="num">9.</span> What Being A Cosigner Actually Means For You</h2>
+<ul>
+  <li><strong>Joint and several liability.</strong> If I miss a payment or default, the lender can pursue you for the full balance, but based on my backup plans, I do not expect this eventuality to happen!</li>
+  <li><strong>Credit reporting.</strong> The loan and its payment history will appear on your credit report. While I'm paying on time, this is generally credit-positive or neutral. A late or missed payment by me would impact your credit score.</li>
+  <li><strong>Borrowing capacity.</strong> Until the loan is refinanced into my name only, the outstanding balance counts toward your debt-to-income ratio when you apply for new credit (a mortgage refinance, for example).</li>
+  <li><strong>Bankruptcy.</strong> US private student loans aren't generally dischargeable in bankruptcy, for either of us.</li>
+  <li><strong>Cosigner release.</strong> Most US private lenders allow cosigner release after a defined number of on-time payments (typically 24 to 48 months) plus a creditworthiness check. My plan is faster: a full refinance in my name only within ~2 months of starting work, which fully removes you from the loan.</li>
+  <li><strong>Death or disability discharge.</strong> Most lenders include a death and permanent disability discharge for the borrower, which would also release you. I'll confirm this clause is in whichever lender we ultimately go with.</li>
+</ul>
+</section>
+
+<!-- 10. NEXT STEPS -->
+<section>
+<h2><span class="num">10.</span> Next Steps And The Application Process</h2>
+<p>I'm working with an education loan consultant in India who has direct relationships with US-based lenders that lend to Harvard graduate students. The process from here:</p>
+<ol>
+  <li>Submit applications to two or three of MPower, Earnest, Discover, and HUCU in parallel.</li>
+  <li>Compare offers on rate, fees, deferment, cosigner release, and prepayment terms; pick the best combination.</li>
+  <li>The application step is non-binding. <strong>No application fee, no processing fee, no liability of any kind</strong> for either of us until we formally accept an offer.</li>
+  <li>Even after acceptance, interest only accrues on what I actually disburse. I plan to draw in tranches, only as needed. Any unused balance (from fellowships, TA/RA-ships, etc.) I simply won't draw down.</li>
+  <li>I'll share the final approval disclosure with you for review before we sign anything.</li>
+</ol>
+</section>
+
+<!-- 11. SOME OTHER DOCUMENTS & LINKS -->
+<section>
+<h2><span class="num">11.</span> Some Other Documents &amp; Links</h2>
+<div class="two-col">
+  <div>
+    <h3>My credentials</h3>
+    <div class="docs-list">
+      <a href="25.05.05%20Achyut%20Rokkam%20-%20Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a href="https://www.linkedin.com/in/achyutrokkam/" target="_blank" rel="noopener">LinkedIn profile</a>
+    </div>
+    <h3>Example loan documents</h3>
+    <div class="docs-list">
+      <a href="https://drive.google.com/file/d/1TpUXTl4z9Qob-OfDz_0uVHwvj8gcPXl7/view?usp=sharing" target="_blank" rel="noopener">HUCU Approval Disclosure (example)</a>
+      <a href="https://drive.google.com/file/d/1kLmMZnZkFSpFikVtv5unh_3bLmv2h69B/view?usp=drive_link" target="_blank" rel="noopener">HUCU Promissory Note (example)</a>
+    </div>
+  </div>
+  <div>
+    <h3>Harvard Kennedy School</h3>
+    <div class="docs-list">
+      <a href="https://www.hks.harvard.edu/educational-programs/masters-programs/master-public-administration-international-development" target="_blank" rel="noopener">MPA/ID program page</a>
+      <a href="https://www.hks.harvard.edu/more/employers/about-our-graduates/employment-snapshot/class-2025-employment-snapshot" target="_blank" rel="noopener">Class of 2025 Employment Snapshot</a>
+      <a href="https://www.hks.harvard.edu/admissions-aid/funding-your-education/funding-your-masters-education/tuition-fees" target="_blank" rel="noopener">Tuition &amp; Cost of Attendance</a>
+      <a href="https://www.hks.harvard.edu/admissions-aid/funding-your-education/funding-your-masters-education/student-loans/LRAP" target="_blank" rel="noopener">LRAP (Loan Repayment Assistance Program)</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer class="doc-footer">
+  <p>Prepared by Achyut Rokkam, May 2026. Cost-of-attendance figures are pulled from the HKS website for the 2026 to 2027 academic year. Indicative loan terms are from a 2022 example loan; my actual terms will depend on the lender we end up with. Anything missing or unclear, happy to walk through.</p>
+</footer>
+
+</div>
+</body>
+</html>
